@@ -1,5 +1,5 @@
 """
-ID 88422183
+ID 88458090
 
 Тимофей ищет место, чтобы построить себе дом. 
 Улица, на которой он хочет жить, имеет длину n, то есть состоит из n
@@ -38,14 +38,9 @@ def get_distance(houses: List[int], n: int) -> List[int]:
     return distanse
 
 
-def read_input() -> Tuple[List[int], int]:
-    n = int(input())
-    houses = list(map(int, input().strip().split()))
-    return houses, n
-
-
-def main():
-    houses, n = read_input()
+def main() -> Tuple[List[int], int]:
+    n = int(input()) # длина улицы нужна для дальнейших расчетов
+    houses = [int(x) for x in input().strip().split() if x != 0]
     print(" ".join(map(str, get_distance(houses, n))))
 
 
