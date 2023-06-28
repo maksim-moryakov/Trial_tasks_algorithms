@@ -1,5 +1,5 @@
 """
-ID 88458090
+ID 88630784
 
 Тимофей ищет место, чтобы построить себе дом. 
 Улица, на которой он хочет жить, имеет длину n, то есть состоит из n
@@ -17,32 +17,34 @@ ID 88458090
 from typing import List, Tuple
 
 
-def get_distance(houses: List[int], n: int) -> List[int]:
-    distanse = [n] * n
+def get_distance(houses: List[int]) -> List[int]:
+    n = len(houses)
+    distance = [n] * n
     zero = [i for i in range(n) if houses[i] == 0]
     first_zero = zero[0]
     last_zero = zero[-1]
 
     for i in range(first_zero, n):
         if houses[i] != 0:
-            distanse[i] = distanse[i - 1] + 1
+            distance[i] = distance[i - 1] + 1
         else:
-            distanse[i] = 0
+            distance[i] = 0
     for i in range(last_zero, first_zero, -1):
         if houses[i] != 0:
-            distanse[i] = min(distanse[i], distanse[i + 1] + 1)
+            distance[i] = min(distance[i], distance[i + 1] + 1)
         else:
-            distanse[i] = 0
+            distance[i] = 0
     for i in range(first_zero - 1, -1, -1):
-        distanse[i] = distanse[i + 1] + 1
-    return distanse
+        distance[i] = distance[i + 1] + 1
+    return distance
 
 
 def main() -> Tuple[List[int], int]:
-    n = int(input()) # длина улицы нужна для дальнейших расчетов
+    input() 
     houses = [int(x) for x in input().strip().split() if x != 0]
-    print(" ".join(map(str, get_distance(houses, n))))
+    return get_distance(houses)
 
 
 if __name__ == '__main__':
-    main()
+    result = main()
+    print(" ".join(map(str, result)))

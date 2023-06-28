@@ -1,5 +1,5 @@
 """
-ID 88457274
+ID 88631145
 
 «Тренажёр для скоростной печати» представляет собой квадратную клавиатуру
 из шестнадцати клавиш размером 4x4. На каждой клавише может быть изображена
@@ -31,8 +31,10 @@ def get_max_points(matrix: List[str], k: int) -> int:
 def main() -> Tuple[List[str], int]:
     k = int(input())
     matrix = [i for i in range(4) for i in input().strip()]
-    print(get_max_points(matrix, k))
+    return matrix, k
 
 
 if __name__ == '__main__':
-    main()
+    matrix, k = main()
+    result = get_max_points(matrix, k)
+    print(result)
